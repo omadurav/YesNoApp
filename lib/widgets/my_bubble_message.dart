@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class MyBubbleMessage extends StatelessWidget {
-  const MyBubbleMessage({super.key});
+  final Message message;
+
+  const MyBubbleMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
-    final sizeScreen = MediaQuery.of(context).size;
+    final Size sizeScreen = MediaQuery.of(context).size;
 
-    final color = Theme.of(context).colorScheme.primary;
+    final Color color = Theme.of(context).colorScheme.primary;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -21,8 +24,8 @@ class MyBubbleMessage extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             color: color,
           ),
-          child: const Text(
-            'Este es mi mensaje',
+          child: Text(
+            message.text,
             style: TextStyle(fontSize: 18, color: Colors.white),
           ),
         ),

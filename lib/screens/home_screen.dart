@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
+import 'package:yes_no_app/providers/chat_provider.dart';
 import 'package:yes_no_app/widgets/Shared/message_field_box.dart';
 import 'package:yes_no_app/widgets/my_bubble_message.dart';
 import 'package:yes_no_app/widgets/response_bubble_message.dart';
@@ -8,6 +11,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = context.watch<ChatProvider>();
+
     return Scaffold(
       appBar: AppBar(
         leading: const Padding(
@@ -28,15 +33,19 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: 5,
+                  itemCount: chatProvider.messagesList.length,
                   itemBuilder: (context, index) {
-                    return (index % 2 == 0)
-                        ? const MyBubbleMessage()
+                    final message = chatProvider.messagesList[index];
+
+                    return (message.fromWho == FromWho.me)
+                        ? MyBubbleMessage(
+                            message: message,
+                          )
                         : const ResponseBubbleMessage();
                   },
                 ),
               ),
-              MessageFieldBox()
+              const MessageFieldBox()
             ],
           ),
         ),
