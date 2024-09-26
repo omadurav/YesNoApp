@@ -18,7 +18,7 @@ class MyBubbleMessage extends StatelessWidget {
         Container(
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          width: sizeScreen.width * 0.7,
+          width: sizeScreen.width * 0.5,
           height: 42,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -26,7 +26,7 @@ class MyBubbleMessage extends StatelessWidget {
           ),
           child: Text(
             message.text,
-            style: TextStyle(fontSize: 18, color: Colors.white),
+            style: const TextStyle(fontSize: 18, color: Colors.white),
           ),
         ),
         const SizedBox(height: 10),

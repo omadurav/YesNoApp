@@ -33,6 +33,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
+                  controller: chatProvider.chatScrollController,
                   itemCount: chatProvider.messagesList.length,
                   itemBuilder: (context, index) {
                     final message = chatProvider.messagesList[index];
@@ -45,7 +46,8 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
-              const MessageFieldBox()
+              MessageFieldBox(
+                  onValue: (value) => chatProvider.sendMessage(value))
             ],
           ),
         ),
