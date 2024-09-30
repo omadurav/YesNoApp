@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                         ? MyBubbleMessage(
                             message: message,
                           )
-                        : const ResponseBubbleMessage();
+                        : ResponseBubbleMessage(message: message);
                   },
                 ),
               ),

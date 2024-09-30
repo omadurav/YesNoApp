@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class ResponseBubbleMessage extends StatelessWidget {
-  const ResponseBubbleMessage({super.key});
+  final Message message;
+  const ResponseBubbleMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +20,16 @@ class ResponseBubbleMessage extends StatelessWidget {
             color: Colors.amber,
             borderRadius: BorderRadius.circular(100),
           ),
-          child: const Text(
-            'Respuesta del mensaje',
-            style: TextStyle(fontSize: 18),
+          child: Text(
+            message.text,
+            style: const TextStyle(fontSize: 18),
           ),
         ),
         const SizedBox(height: 10),
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Image.network(
-            'https://yesno.wtf/assets/no/20-56c4b19517aa69c8f7081939198341a4.gif',
+            message.urlImage!,
             width: size.width * 0.7,
             height: 160,
             fit: BoxFit.cover,
